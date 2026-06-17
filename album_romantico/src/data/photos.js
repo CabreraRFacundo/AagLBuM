@@ -9,8 +9,22 @@ function shuffle(array) {
     return arr;
 }
 
-export const photos = shuffle(
-    Array.from({ length: 17 }, (_, i) => ({
-        image: `${import.meta.env.BASE_URL}fotitos/a${i + 1}.jpg`,
+const firstPhoto = {
+    image: `${import.meta.env.BASE_URL}fotitos/a1.jpg`,
+};
+
+const lastPhoto = {
+    image: `${import.meta.env.BASE_URL}fotitos/a17.jpg`,
+};
+
+const middlePhotos = shuffle(
+    Array.from({ length: 15 }, (_, i) => ({
+        image: `${import.meta.env.BASE_URL}fotitos/a${i + 2}.jpg`,
     }))
 );
+
+export const photos = [
+    firstPhoto,
+    ...middlePhotos,
+    lastPhoto,
+];

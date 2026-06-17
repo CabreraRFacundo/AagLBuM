@@ -1,22 +1,38 @@
+import { useState } from "react";
 import "./PolaroidAlbum.css";
 import { photos } from "../data/photos";
 
 
 export default function PolaroidAlbum() {
-    return (
-        <div className="album">
-            <h1>Te amo mucho Agugu</h1>
+    const [orientations, setOrientations] = useState({});
 
-            <div className="polaroid-grid">
-                {photos.map((photo, index) => (
-                    <div className="polaroid" key={index}>
-                        <img
-                            src={photo.image}
-                            alt={`Foto ${index + 1}`}
-                        />
-                    </div>
-                ))}
-            </div>
+    const handleImageLoad = (index, e) => {
+        const img = e.target;
+
+        const isLandscape = img.naturalWidth > img.naturalHeight;
+
+        setOrientations((prev) => ({
+            ...prev,
+            [index]: isLandscape ? "landscape" : "portrait",
+        }));
+    };
+
+    return (
+        <div className="polaroid-grid">
+            {photos.map((photo, index) => (
+                <div
+                    key={index}
+                    className={`polaroid ${
+                        orientations[index] || ""
+                    }`}
+                >
+                    <img
+                        src={photo.image}
+                        alt=""
+                        onLoad={(e) => handleImageLoad(index, e)}
+                    />
+                </div>
+            ))}
         </div>
     );
 }
