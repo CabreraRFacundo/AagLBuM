@@ -4,14 +4,14 @@ import { photos } from "../data/photos";
 
 
 export default function PolaroidAlbum() {
-    const [orientations, setOrientations] = useState({});
+    const [orientation, setOrientation] = useState({});
 
-    const handleImageLoad = (index, e) => {
+    const handleLoad = (index, e) => {
         const img = e.target;
 
         const isLandscape = img.naturalWidth > img.naturalHeight;
 
-        setOrientations((prev) => ({
+        setOrientation((prev) => ({
             ...prev,
             [index]: isLandscape ? "landscape" : "portrait",
         }));
@@ -22,14 +22,12 @@ export default function PolaroidAlbum() {
             {photos.map((photo, index) => (
                 <div
                     key={index}
-                    className={`polaroid ${
-                        orientations[index] || ""
-                    }`}
+                    className={`polaroid ${orientation[index] || ""}`}
                 >
                     <img
                         src={photo.image}
+                        onLoad={(e) => handleLoad(index, e)}
                         alt=""
-                        onLoad={(e) => handleImageLoad(index, e)}
                     />
                 </div>
             ))}
