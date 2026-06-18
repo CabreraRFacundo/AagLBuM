@@ -22,7 +22,7 @@ export default function PolaroidAlbum() {
                 <div className="letter">
 
                     <p>
-                        Mi Agugu <br /><br />
+                        Mi Agugu <br />
                         Espero que a estas alturas ya sepas: <br />
                         Lo mucho que te amo<br />
                         Lo hermosa que sos<br />
@@ -36,7 +36,7 @@ export default function PolaroidAlbum() {
 
                         Gracias por amarme tanto <br />
                         Gracias por cada momento <br />
-                        Gracias por estar siempre <br /><br />
+                        Gracias por estar siempre <br />
 
                         Te amo mucho
 
